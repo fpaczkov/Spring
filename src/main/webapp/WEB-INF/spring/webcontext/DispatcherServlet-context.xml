@@ -12,7 +12,7 @@
 	<mvc:annotation-driven/>
 	<context:component-scan base-package="com.packt.webstore"/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property value="/WEB-INF/jsp/" name="prefix"/>
+		<property value="/WEB-INF/views/" name="prefix"/>
 		<property value=".jsp" name="suffix"/>
 	</bean>
 </beans>
