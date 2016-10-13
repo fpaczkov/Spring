@@ -2,7 +2,10 @@ package com.packt.webstore.domain.repository.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +22,7 @@ public class InMemoryProductRepository implements ProductRepository {
 		Product iphone = new Product("P1234","iPhone 5s", new BigDecimal(500));
 		iphone.setDescription("Apple iPhone 5s, smartfon z 4-calowym "
 				+ "wyœwietlaczem o rozdielczoœci 640x1136 oraz 8-megapikselowym aparetem");
-		iphone.setCategory("Smart Phone");
+		iphone.setCategory("Smartphone");
 		iphone.setManufacturer("Apple");
 		iphone.setUnitsInStock(1000);
 		
@@ -70,6 +73,31 @@ public class InMemoryProductRepository implements ProductRepository {
 				productsByCategory.add(product);
 			}
 		}
+		return productsByCategory;
+	}
+	
+	public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams){
+		Set<Product> productsByBrand = new HashSet<Product>();
+		Set<Product> productsByCategory = new HashSet<Product>();
+		Set<String> criterias = filterParams.keySet();
+		
+		if(criterias.contains("brand")){
+			for(String brandName: filterParams.get("brand")){
+				for(Product product: listOfProducts){
+					if(brandName.equalsIgnoreCase(product.getManufacturer())){
+						productsByBrand.add(product);
+					}
+				}
+			}
+		}
+		
+		if(criterias.contains("category")){
+			for(String category: filterParams.get("category")){
+				productsByCategory.addAll(this.getProductsByCategory(category));
+			}
+		}
+		
+		productsByCategory.retainAll(productsByBrand);
 		return productsByCategory;
 	}
 }

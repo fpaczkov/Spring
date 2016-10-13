@@ -1,11 +1,15 @@
 package com.packt.webstore.domain.repository.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Repository;
 
 import com.packt.webstore.domain.Customer;
+import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.CustomerRepository;
 
 @Repository
@@ -23,6 +27,7 @@ public class InMemoryCustomerRepository implements CustomerRepository{
 		listOfCustomers.add(JanKowalski);
 		listOfCustomers.add(MichalWisniewski);
 	}
+	
 	public List<Customer> getAllCustomers(){
 		return listOfCustomers;
 	}
