@@ -23,6 +23,13 @@
 							<div class="caption">
 								<h3>${customer.name}</h3>
 								<p>${customer.address}</p>
+								<c:forEach items="${customer.productsOwned}" var="product">
+									<div class="thumbnail">
+										<div class="caption">
+											<p>${product.name} ${product.unitPrice}PLN</p>
+										</div>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>

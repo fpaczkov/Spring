@@ -1,10 +1,14 @@
 package com.packt.webstore.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
 	
 	private String customerId;
 	private String name;
 	private String address;
+	private List<Product> productsOwned = new ArrayList<Product>();
 	private boolean noOfOrdersMode;
 
 	public Customer(){
@@ -68,6 +72,7 @@ public class Customer {
 		return address;
 	}
 
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -79,5 +84,20 @@ public class Customer {
 	public void setNoOfOrdersMode(boolean noOfOrdersMode) {
 		this.noOfOrdersMode = noOfOrdersMode;
 	}
+
+	public List<Product> getProductsOwned() {
+		return productsOwned;
+	}
+
+	public void setProductsOwned(List<Product> productsOwned) {
+		this.productsOwned = productsOwned;
+	}
 	
+	public boolean addProduct(Product product){
+		return productsOwned.add(product);
+	}
+	
+	public boolean returnProduct(Product product){
+		return productsOwned.remove(product);
+	}
 }
