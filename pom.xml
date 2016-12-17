@@ -27,6 +27,29 @@
 		<version>1.16.10</version> 
 		<scope>provided</scope> 
 	</dependency>
+    <dependency>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>1.1.2.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+    </dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>3.1.4.RELEASE</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-asm</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>3.1.4.RELEASE</version>
+	</dependency>
   </dependencies>
   <properties>
   	<maven.compiler.source>1.7</maven.compiler.source>

@@ -12,6 +12,9 @@
 <body>
 	<section>
 		<div class="jumbotron">
+		<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">
+			Wyloguj się
+		</a>
 			<div class="container">
 				<h1>Produkty</h1>
 				<p>Dodaj produkty</p>
@@ -24,7 +27,9 @@
 				<legend>Dodaj nowy produkt</legend>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="productId">Id produktu</label>
+					<label class="control-label col-lg-2 col-lg-2" for="productId">
+						<spring:message code="addProduct.form.productId.label"/>
+					</label>
 					<div class="col-lg-10">
 						<form:input id="productId" path="productId" type="text" class="form:input-large"/>
 					</div>
